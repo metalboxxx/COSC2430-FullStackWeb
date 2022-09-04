@@ -1,20 +1,20 @@
 <?php
 session_start();
+include 'header.php';
+include 'file_handling/products_file_handling.php';
+
+load_products_data();
 
 if (isset($_POST['act'])){
     $product = [
-        'id' => 2332,
-        'vendor' => $_SESSION['user']['name'],
+        'id' => 333,
         'name' => $_POST['name'],
-        'price' => $_POST['price'],
-        'created_at' => date('y-m-d H:i:s')
+        'price' => $_POST['price']
     ];
-    if (!isset($_SESSION['products'])){
-        $_SESSION['products'] = [];
-    } else {
-        $_SESSION['products'][] = $product;
-    }
+    $_SESSION['products'][] = $product;
+    save_products_data();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if (isset($_POST['act'])){
     <title>Add new product</title>
 </head>
 <body>
-<form action="add_new_product.php" method="post">
+<form action="AddNewProduct.php" method="post">
     Product Name<input type="text" name="name"> <br>
     Price<input type="number" name="price"> <br>
     Submit<input type="submit" name="act">

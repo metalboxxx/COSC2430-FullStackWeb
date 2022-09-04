@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['selected_product'])){
-    header("location: see_products.php");
-}
+include 'header.php';
 
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
@@ -20,15 +17,15 @@ if(isset($_GET['reset_cart'])){
 }
 
 
-$orders = [];
 if(isset($_POST['finish_cart'])){
-    global $orders;
+
     $order = [
-        id => 777,
-        customer => $_SESSION['user'],
-        products => $_SESSION['cart'],
+        id => 444,
+        customer => $_SESSION['user']['username'],
+        products_bought => $_SESSION['cart']['id'],
         created_at => date()
     ];
+    $_SESSION['orders'][] = $order; 
 }
 
 ?>
