@@ -1,14 +1,15 @@
 <?php
 session_start();
-include 'header.php';
+require 'header.php';
+require 'create_id.php';
 
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
     if (isset($_SESSION['cart'])){
-        $_SESSION['cart'][] = $_SESSION['selected_product'];
+        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
     } else {
         $_SESSION['cart'] = [];
-        $_SESSION['cart'][] = $_SESSION['selected_product'];
+        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
     }
 }
 
@@ -20,7 +21,7 @@ if(isset($_GET['reset_cart'])){
 if(isset($_POST['finish_cart'])){
 
     $order = [
-        id => 444,
+        id => create_id($_SESSION['$orders']),
         customer => $_SESSION['user']['username'],
         products_bought => $_SESSION['cart']['id'],
         created_at => date()

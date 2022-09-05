@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'header.php';
-include 'file_handling/products_file_handling.php';
-
+require 'header.php';
+require 'file_handling/products_file_handling.php';
 load_products_data();
+include 'create_id.php';
 
 if (isset($_POST['act'])){
     $product = [
-        'id' => 333,
+        'id' => create_id($_SESSION['products']),
         'name' => $_POST['name'],
         'price' => $_POST['price']
     ];
