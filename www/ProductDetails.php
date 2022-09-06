@@ -1,17 +1,16 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['selected_product'])){
-    header("location: see_products.php");
-}
+require 'header.php';
+require 'create_id.php';
+require 'file_handling/products_file_handling.php';
 
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
     if (isset($_SESSION['cart'])){
-        $_SESSION['cart'][] = $_SESSION['selected_product'];
+        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
     } else {
         $_SESSION['cart'] = [];
-        $_SESSION['cart'][] = $_SESSION['selected_product'];
+        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
     }
 }
 
@@ -20,15 +19,16 @@ if(isset($_GET['reset_cart'])){
 }
 
 
-$orders = [];
 if(isset($_POST['finish_cart'])){
-    global $orders;
+
     $order = [
-        id => 777,
-        customer => $_SESSION['user'],
-        products => $_SESSION['cart'],
+        id => create_id($_SESSION['$orders']),
+        address => $_SESSION['user']['address'],
+        products_bought => $_SESSION['cart']['id'],
+        distribution_hub => array_rand($_SESSION['hubs'])['name'],
         created_at => date()
     ];
+    $_SESSION['orders'][] = $order; 
 }
 
 ?>

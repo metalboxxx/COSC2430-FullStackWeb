@@ -1,9 +1,8 @@
 <?php
 session_start();
-
-
-
-
+if (!isset($_SESSION['selected_order'])){
+    header("location: see_products.php");
+}
 ?>
 
 
@@ -17,7 +16,7 @@ session_start();
 </head>
 <body>
     <?php       // Display current product
-    echo "Current product";
+    echo "Current order";
     echo 'ID: ';$_SESSION["selected_order"]["id"];
     echo 'Address: ';$_SESSION["selected_order"]["address"];
     echo 'Created_at: ';$_SESSION["selected_order"]["price"];     
