@@ -2,6 +2,7 @@
 session_start();
 require 'header.php';
 require 'create_id.php';
+require 'file_handling/products_file_handling.php';
 
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
@@ -22,8 +23,9 @@ if(isset($_POST['finish_cart'])){
 
     $order = [
         id => create_id($_SESSION['$orders']),
-        customer => $_SESSION['user']['username'],
+        address => $_SESSION['user']['address'],
         products_bought => $_SESSION['cart']['id'],
+        distribution_hub => array_rand($_SESSION['hubs'])['name'],
         created_at => date()
     ];
     $_SESSION['orders'][] = $order; 
