@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once 'header.php';
+require_once 'commons/header.php';
 
       if(isset($_SESSION['use']))
       {
-        $file = fopen('database/account.db', 'r');
+        $file = fopen('../data/account.db', 'r');
         while(!feof($file)){
             $line = fgets($file);
             $arr = explode(";",$line);

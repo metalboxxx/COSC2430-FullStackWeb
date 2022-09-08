@@ -81,7 +81,6 @@ function FormValidate(){
 
     if (username && name && email && password) {
         // Người dùng đã nhập đúng thông tin
-        alert("Created account successfully!");
         window.location.href= "CustomerReg.php";
 
         return true;
@@ -89,5 +88,70 @@ function FormValidate(){
 
     }
 
+    return false;
+}
+
+
+function VendorRegisterValidate(){
+    var username = document.getElementById('username').value;
+    var errorUserName = document.getElementById('errorUserName');
+    var regexName = /^[a-zA-Z0-9]{8,15}$/;
+    var password = document.getElementById('password').value;
+    var errorPassword = document.getElementById('errorPassword');
+    var regexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
+    var bname = document.getElementById('bsname').value;
+    var errorBussinessName = document.getElementById('errorBussinessName');
+    var badd = document.getElementById('bsadd').value;
+    var errorBussinessAddress = document.getElementById('errorBussinessAddress');
+
+    if (username == '' || username == null) {
+        errorUserName.innerHTML = "Please fill in this field!";
+        return false;
+
+    }else if(!regexName.test(username)){
+        errorUserName.innerHTML = "Your username must contain only letters (lower and upper case) and digits, has a length from 8 to 15 characters";
+        return false;
+    }else{
+        errorUserName.innerHTML = '';
+    }
+    
+    if (password == '' || password == null) {
+        errorPassword.innerHTML = "Empty Password!";
+        return false;
+
+    }else if(!regexPassword.test(password)){
+        errorPassword.innerHTML = "Password must be from 8 to 20 characters. Each password must contain at least 1 lower case letter, at least 1 upper case letter, at least 1 digit!";
+        return false;
+    }else{
+        errorPassword.innerHTML = '';
+    }
+
+    if (bname == '' || bname == null) {
+        errorBussinessName.innerHTML = "Empty Name!";
+        return false;
+
+    }else if(!reGexChar.test(bname)){
+        errorBussinessName.innerHTML = "Your bussiness name must be more than 5 characters";
+        return false;
+    }else{
+        errorBussinessName.innerHTML = '';
+    }
+    if (badd == '' || badd == null) {
+        errorBussinessAddress.innerHTML = "Empty Address!";
+        return false;
+    }else if(!reGexChar.test(badd)){
+        errorAddress.innerHTML = "5 or more characters required!";
+        return false;
+    }else{
+        errorAddress.innerHTML = '';
+    }
+    if (username && bname && badd && password) {
+        // Người dùng đã nhập đúng thông tin
+        alert("Created account successfully!");
+        window.location.href= "VendorReg.php";
+        return true;
+    }else{
+
+    }
     return false;
 }
