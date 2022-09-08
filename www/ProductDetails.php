@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'header.php';
-require 'create_id.php';
+require 'commons/header.php';
+require 'functions/create_id.php';
 require 'file_handling/products_file_handling.php';
 
 // Buttons fuctionalities

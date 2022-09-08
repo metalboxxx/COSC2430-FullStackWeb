@@ -1,5 +1,5 @@
 <?php
-require 'header.php';
+require 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
 session_start();

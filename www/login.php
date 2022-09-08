@@ -2,11 +2,11 @@
 session_start();
 ?>
 <?php
-require_once 'header.php';
+require_once 'commons/header.php';
 if(isset($_SESSION['use']))   // Checking whether the session is already there or not if 
                               // true then header redirect it to the home page directly 
  {
-    require_once 'index.php';
+    require_once 'Index.php';
  }
 else
 {
@@ -32,7 +32,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
  
     if($good){
     $_SESSION['user'] = $user;
-        echo '<script type="text/javascript"> window.open("index.php","_self");</script>';  
+        echo '<script type="text/javascript"> window.open("Index.php","_self");</script>';  
     }else{
         echo "invalid UserName or Password";
     }
