@@ -2,7 +2,6 @@
 require 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
-session_start();
 load_products_data();
 
 if (isset($_POST["product_detail"])){

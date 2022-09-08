@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 load_products_data();
@@ -27,10 +27,15 @@ if (isset($_POST['act'])){
     <title>Add new product</title>
 </head>
 <body>
-<form action="AddNewProduct.php" method="post">
-    Product Name<input type="text" name="name"> <br>
-    Price<input type="number" name="price"> <br>
-    Submit<input type="submit" name="act">
+<h1 class="text-center">Add new product</h1>
+<form action="AddNewProduct.php" method="post" class="container">
+    <label for="name_product_input" class="form-label">Product Name</label>
+    <input id="name_product_input" class="form-control"type="text" name="name"><br>
+
+    <label for="price_product_input" class="form-label">Price</label>
+    <input id="price_product_input" class="form-control"type="number" name="price"><br>
+
+    <input id="name_product_input" class="form-control"type="submit" name="act"><br>
 </form>
 </body>
 </html>

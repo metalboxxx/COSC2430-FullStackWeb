@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require 'commons/header.php';
 require 'functions/create_id.php';
 require 'file_handling/products_file_handling.php';
@@ -20,13 +20,13 @@ if(isset($_GET['reset_cart'])){
 
 
 if(isset($_POST['finish_cart'])){
-
     $order = [
         id => create_id($_SESSION['$orders']),
         address => $_SESSION['user']['address'],
         products_bought => $_SESSION['cart']['id'],
         distribution_hub => array_rand($_SESSION['hubs'])['name'],
-        created_at => date()
+        created_at => date(),
+        isDelivered => FALSE
     ];
     $_SESSION['orders'][] = $order; 
 }
@@ -42,6 +42,7 @@ if(isset($_POST['finish_cart'])){
     <title>Document</title>
 </head>
 <body>
+    <h1 class="text-center"><?php $_SESSION["selected_product"]["name"]?></h1>
 
     <?php       // Display current product
     echo "Current product";
@@ -50,13 +51,14 @@ if(isset($_POST['finish_cart'])){
     echo 'Price: ';$_SESSION["selected_product"]["price"];     
     ?>
 
-
-    <form method="get" action="ProductDetails.php">
-        Add to cart <input type="submit" value="add_product" ><br>
-        Reset cart <input type="submit" value="reset_cart"> <br>
-    </form>
-    <form method="post" action="ProductDetails.php">
-        Finish cart <input type="submit" value="finish_cart"><br>
-    </form>
+    <div class="container">
+        <form method="get" action="ProductDetails.php">
+            <input id="add_product_submit" class="form-control shadow p-3 mb-5 bg-body rounded" type="submit" name="add_product" value="Add to cart">
+            <input id="reset_cart_submit" class="form-control shadow p-3 mb-5 bg-body rounded" type="submit" name="reset_cart" value="Reset cart"> 
+        </form>
+        <form method="post" action="ProductDetails.php">
+            <input id="submit_cart_submit" class="form-control  shadow p-3 mb-5 bg-body rounded " type="submit" name="finish_cart" value="Finish">
+        </form>
+    </div>
 </body>
 </html>

@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <?php
 require_once 'commons/header.php';
 if(isset($_SESSION['use']))   // Checking whether the session is already there or not if 

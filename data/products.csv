@@ -1,10 +1,13 @@
-id,name,price
-32,Chair,335
-33,Table,667
-333,Book,123
-333,Book,225
-333,Book,225
-1,Book,444
-334,Book,444
-,,
-335,"Book Hay",,324234
+id,name,vendor,price
+32,Chair,335,
+33,Table,667,
+333,Book,123,
+333,Book,225,
+333,Book,225,
+1,Book,444,
+334,Book,444,
+,,,
+335,"Book Hay",,
+336,"Book Hay",,1234
+337,"Book Hay",,1234
+338,"Book Hay",,1234

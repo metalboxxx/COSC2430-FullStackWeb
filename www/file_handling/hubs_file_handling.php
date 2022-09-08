@@ -23,7 +23,7 @@ function save_hubs_data() {
 
     $path_to_hubs_data = '../data/distribution_hubs.csv';
     $fp = fopen($path_to_hubs_data,'w');
-    $column_names = ['id','name','price'];
+    $column_names = ['name','address'];
 
     fputcsv($fp,$column_names);
     if (is_array($_SESSION['hubs'])) {
