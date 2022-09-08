@@ -8,8 +8,8 @@ include 'functions/create_id.php';
 if (isset($_POST['act'])){
     $product = [
         'id' => create_id($_SESSION['products']),
-        'vendor' => $_SESSION['vendor']['username'],
         'name' => $_POST['name'],
+        'vendor' => $_SESSION['user']['username'],
         'price' => $_POST['price']
     ];
     $_SESSION['products'][] = $product;

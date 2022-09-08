@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'header.php';
+require_once 'commons/header.php';
 
       if(isset($_SESSION['use']))
       {

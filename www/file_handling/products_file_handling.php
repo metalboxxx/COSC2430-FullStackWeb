@@ -20,7 +20,6 @@ function load_products_data() {
 
 
 function save_products_data() {
-
     $path_to_products_data = '../data/products.csv';
     $fp = fopen($path_to_products_data,'w');
     $column_names = ['id','name','price'];

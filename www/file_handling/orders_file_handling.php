@@ -13,7 +13,7 @@ function load_orders_data() {
         foreach ($first_line as $column_name) {
             $order[$column_name] = $fields[$i];
             if ($column_name = 'products_bought'){
-                $order[$column_name] = explode('|',$order['column_name']);
+                $order[$column_name] = explode('|',$order['products_bought']);
             }
             $i++;
         }

@@ -51,11 +51,11 @@ if(isset($_POST['finish_cart'])){
     ?>
 
 
-    <form method="get" action="product_details.php">
+    <form method="get" action="ProductDetails.php">
         Add to cart <input type="submit" value="add_product" ><br>
         Reset cart <input type="submit" value="reset_cart"> <br>
     </form>
-    <form method="post" action="product_details.php">
+    <form method="post" action="ProductDetails.php">
         Finish cart <input type="submit" value="finish_cart"><br>
     </form>
 </body>

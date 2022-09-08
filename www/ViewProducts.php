@@ -55,9 +55,9 @@ if (isset($_POST["product_detail"])){
                 echo "<td>{$product["id"]}</td>";
                 echo "<td>{$product["name"]}</td>";
                 echo "<td>{$product["price"]}</td>";
-                echo "<td><form method='post' action='SeeProducts.php'><input type='submit' name='product_detail' class='button' value=";
+                echo "<td><a href='ProductDetails.php'><form method='post' action='ViewProducts.php'><input type='submit' name='product_detail' class='button' value=";
                 echo "{$product["id"]},{$product["name"]},{$product["price"]}";
-                echo "></form></td></tr>";
+                echo "></form></a></td></tr>";
             }
         }
         ?>
