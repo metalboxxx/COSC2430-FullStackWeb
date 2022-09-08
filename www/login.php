@@ -2,11 +2,11 @@
 session_start();
 ?>
 <?php
-require_once 'commons/header.php';
+require_once 'header.php';
 if(isset($_SESSION['use']))   // Checking whether the session is already there or not if 
                               // true then header redirect it to the home page directly 
  {
-    require_once 'Index.php';
+    require_once 'index.php';
  }
 else
 {
@@ -17,22 +17,21 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
 {
      $user = $_POST['username'];
      $pass = $_POST['password'];
- 
     if(isset($_POST["username"]) && isset($_POST["password"])){
     $file = fopen('database/account.db', 'r');
     $good=false;
     while(!feof($file)){
         $line = fgets($file);
         $array = explode(";",$line);
-    if(trim($array[0]) == $_POST['username'] && password_verify($_POST['password'], trim($array[1]))){
+    if(trim($array[0]) && trim($array[1]) == $_POST['username'] && password_verify($_POST['password'], trim($array[2]))){
             $good=true;
             break;
         }
     }
  
     if($good){
-    $_SESSION['user'] = $user;
-        echo '<script type="text/javascript"> window.open("Index.php","_self");</script>';  
+    $_SESSION['use'] = $user;
+        echo '<script type="text/javascript"> window.open("index.php","_self");</script>';  
     }else{
         echo "invalid UserName or Password";
     }
@@ -72,7 +71,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
         </div>
     </div>
 </div>
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center" style="position: fixed;">
         <p>© 2022 Copyright: Group 33</p>
 </footer>
 
