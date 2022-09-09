@@ -83,6 +83,8 @@ else
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h1>Register as Vendor</h1>
+                    Create a <a href="CustomerReg.php" class="link-primary">Customer</a> or <a href="ShipperReg.php" class="link-primary">Shipper</a> Account
+
                 </div>
                 <div class="panel-body">
                     <form class= "row g-3" onsubmit="return VendorRegisterValidate();"  method="post" enctype="multipart/form-data">
@@ -117,7 +119,14 @@ else
             </div>
         </div>   
     </div>
-    <footer class="container-fluid text-center">
-    <p>© 2022 Copyright: Group 33</p>
+    <footer class="container-fluid text-center"  style='position: relative;'>
+                <ul class="nav justify-content-center border-bottom pb-1 mb-1 ">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                </ul>
+                <p class="text-center text-muted">© 2022 Copyright: Group 33</p>       
+    </footer>
 </body>
 
