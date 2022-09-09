@@ -3,6 +3,58 @@
 
    
 ?>
+<?php
+
+if(isset($_POST["username"],$_POST["password"],$_POST["name"],$_POST["email"],$_POST["address"]))
+{
+    // check if user exist.
+    $file=fopen("../data/account.db","r");
+    $finduser = false;
+    while(!feof($file))
+    {
+        $line = fgets($file);
+        $array = explode(";",$line);
+        if(trim($array[0]) != "" && trim($array[1]) == $_POST['username'])
+        {
+            $finduser=true;
+            break;
+        }
+    }
+    fclose($file);
+ 
+    //set location to store profile picture
+    $target_path = "img/";
+    $og_file = $_FILES["profilePicture"]["name"];
+    $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
+
+    //announce if the username is existed
+    if( $finduser )
+    {
+        echo $_POST["username"];
+        echo ' existed!';
+        require_once 'CustomerReg.php';
+    }
+    else
+    {   
+        //store account in text file if the condition is true
+        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["name"]) && preg_match('/^.{5,}$/', $_POST["email"]) && preg_match('/^.{5,}$/', $_POST["address"])){
+            $file = fopen("../data/account.db", "a");
+            fputs($file,"Customer;".$_POST["username"].";".password_hash($_POST["password"], PASSWORD_DEFAULT).";".$_POST["name"].";".$_POST["email"].";".$_POST["address"].";".$og_file."\r\n");
+            fclose($file);
+            echo $_POST["username"];
+            echo " registered successfully!";  
+        }
+        else{
+            echo "Create account failed";      
+        }
+ 
+    }
+}
+else
+{
+    require_once 'CustomerReg.php';
+}
+?>
 
 <body>
     <script src="register.js"></script>
@@ -54,55 +106,3 @@
 </body>
 
 
-<?php
-
-if(isset($_POST["username"],$_POST["password"],$_POST["name"],$_POST["email"],$_POST["address"]))
-{
-    // check if user exist.
-    $file=fopen("database/account.db","r");
-    $finduser = false;
-    while(!feof($file))
-    {
-        $line = fgets($file);
-        $array = explode(";",$line);
-        if(trim($array[1]) == $_POST['username'] && trim($array[0]) != "" )
-        {
-            $finduser=true;
-            break;
-        }
-    }
-    fclose($file);
- 
-    // register user or pop up message
-    $target_path = "uploads/";
-    $og_file = $_FILES["profilePicture"]["name"];
-    $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
-
-    // $directory = 'uploads/';
-    // move_uploaded_file($og_file, $directory);
-    if( $finduser )
-    {
-        echo $_POST["username"];
-        echo ' existed!';
-        require_once 'CustomerReg.php';
-    }
-    else
-    {
-        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["name"]) && preg_match('/^.{5,}$/', $_POST["email"]) && preg_match('/^.{5,}$/', $_POST["address"])){
-            $file = fopen("database/account.db", "a");
-            fputs($file,"customer;".$_POST["username"].";".password_hash($_POST["password"], PASSWORD_DEFAULT).";".$_POST["name"].";".$_POST["email"].";".$_POST["address"].";".$og_file."\r\n");
-            fclose($file);
-            echo $_POST["username"];
-            echo " registered successfully!";  
-        }
-        else{
-            echo "Create account failed";      
-        }
- 
-    }
-}
-else
-{
-    require_once 'CustomerReg.php';
-}
-?>
