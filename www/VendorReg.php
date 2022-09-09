@@ -1,5 +1,5 @@
 <?php 
-    require_once 'header.php'
+    require_once 'commons/header.php';
 ?>
 
 <?php
@@ -31,7 +31,7 @@ if(isset($_POST["username"],$_POST["password"],$_POST["bsname"],$_POST["bsadd"])
     fclose($file);
  
     // register user or pop up message
-    $target_path = "uploads/";
+    $target_path = "img/";
     $og_file = $_FILES["profilePicture"]["name"];
     $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
 
