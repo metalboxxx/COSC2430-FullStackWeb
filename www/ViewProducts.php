@@ -6,6 +6,10 @@ require 'file_handling/products_file_handling.php';
 
 load_products_data();
 
+if ($_SESSION["user_type"] == "Vendor") {
+    header("Location: VendorViewProducts.php");
+}
+
 if (isset($_POST["get_product_detail"])){
         $_SESSION["selected_product"]["id"] = $_POST["id"];
         $_SESSION["selected_product"]["name"] = $_POST["name"];
