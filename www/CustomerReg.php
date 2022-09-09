@@ -63,7 +63,9 @@ else
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h1>Register as Customer</h1>
+                    Create a <a href="VendorReg.php" class="link-primary">Vendor</a> or <a href="ShipperReg.php" class="link-primary">Shipper</a> Account
                 </div>
+                </br>
                 <div class="panel-body">
                     <form class= "row g-3" onsubmit="return FormValidate();" method="post" enctype="multipart/form-data">
                         <div class="form-group">
@@ -101,8 +103,15 @@ else
             </div>
         </div>   
     </div>
-    <footer class="container-fluid text-center">
-    <p>© 2022 Copyright: Group 33</p>
+    <footer class="container-fluid text-center" style='position: relative;'>
+                <ul class="nav justify-content-center border-bottom pb-1 mb-1">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                </ul>
+                <p class="text-center text-muted">© 2022 Copyright: Group 33</p>
+            </footer>
 </body>
 
 
