@@ -20,7 +20,7 @@
             <a class="navbar-brand" href="#">LOGO</a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="Index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="ViewProducts.php">Shopping</a></li>
                     <?php
                         if (isset($_SESSION["use"])) {
