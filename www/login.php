@@ -2,8 +2,8 @@
 session_start();
 ?>
 <?php
-require_once 'header.php';
-if(isset($_SESSION['use']))   // Checking whether the session is already there or not if 
+    require_once 'commons/header.php';
+    if(isset($_SESSION['use']))   // Checking whether the session is already there or not if 
                               // true then header redirect it to the home page directly 
  {
     require_once 'index.php';
@@ -18,7 +18,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
      $user = $_POST['username'];
      $pass = $_POST['password'];
     if(isset($_POST["username"]) && isset($_POST["password"])){
-    $file = fopen('database/account.db', 'r');
+    $file = fopen('../data/account.db', 'r');
     $good=false;
     while(!feof($file)){
         $line = fgets($file);

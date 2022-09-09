@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'header.php';
+require_once 'commons/header.php';
 
       if(isset($_SESSION['use']))
       {
@@ -10,7 +10,7 @@ require_once 'header.php';
             $arr = explode(";",$line);
             //Display customer profile after logged in
             if(strpos($line, $_SESSION['use'])  !== false && $arr[0] == 'Customer' ){
-                $filepath = '../data/'.$arr[6];
+                $filepath = "../img/".$arr[6];
                 echo '<img src="'.$filepath.'" style="width: 300px; height: 300px; background-size: cover; border-radius: 50%;">'."<br>" ;
                 echo "<strong> Role: </strong>". $arr[0]."<br>";
                 echo "<strong>Username: </strong>" .$arr[1]."<br>";
@@ -23,7 +23,7 @@ require_once 'header.php';
             }
             //Display vendor profile after logged in
             if(strpos($line, $_SESSION['use'])  !== false && $arr[0] == 'Vendor' ){
-                $filepath = '../data/'.$arr[5];
+                $filepath = '../img/'.$arr[5];
                 echo '<img src="'.$filepath.'" style="width: 300px; height: 300px; background-size: cover; border-radius: 50%;">'."<br>" ;
                 echo "<strong> Role: </strong>". $arr[0]."<br>";
                 echo "<strong>Username: </strong>" .$arr[1]."<br>";
@@ -35,7 +35,7 @@ require_once 'header.php';
             }
             //Display shipper profile after logged in
             if(strpos($line, $_SESSION['use'])  !== false && $arr[0] == 'Shipper' ){
-                $filepath = '../data/'.$arr[4];
+                $filepath = '../img/'.$arr[4];
                 echo '<img src="'.$filepath.'" style="width: 300px; height: 300px; background-size: cover; border-radius: 50%;">'."<br>" ;
                 echo "<strong> Role: </strong>". $arr[0]."<br>";
                 echo "<strong>Username: </strong>" .$arr[1]."<br>";
