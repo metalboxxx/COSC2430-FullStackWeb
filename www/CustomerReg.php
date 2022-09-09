@@ -23,7 +23,7 @@ if(isset($_POST["username"],$_POST["password"],$_POST["name"],$_POST["email"],$_
     fclose($file);
  
     //set location to store profile picture
-    $target_path = "../img/";
+    $target_path = "img/";
     $og_file = $_FILES["profilePicture"]["name"];
     $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
 
