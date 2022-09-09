@@ -61,5 +61,20 @@ if (isset($_POST["product_detail"])){
         }
         ?>
     </table>
+    
+    <div class="row">      
+        <?php 
+        foreach ($_SESSION['products'] as $product){
+            echo '<div class="container-fluid col-xl-6 col-md-4">';
+            echo "Name: "; print_r($product['name']);
+            echo '<form method="post" action="ViewProducts.php">';
+            echo '<input type="submit" name="product_detail" value=';
+            echo "[{$product["id"]},{$product["name"]},{$product["price"]}]";
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+
 </body>
 </html>
