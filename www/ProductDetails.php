@@ -5,14 +5,16 @@ require_once 'commons/header.php';
 require 'functions/create_id.php';
 require 'file_handling/products_file_handling.php';
 require 'file_handling/orders_file_handling.php';
+require 'file_handling/hubs_file_handling.php';
 
+load_hubs_data();
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
     if (isset($_SESSION['cart'])){
-        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
+        $_SESSION['cart'][] = $_SESSION['selected_product'];
     } else {
         $_SESSION['cart'] = [];
-        $_SESSION['cart'][] = $_SESSION['selected_product']['id'];
+        $_SESSION['cart'][] = $_SESSION['selected_product'];
     }
 }
 
@@ -31,19 +33,22 @@ if(isset($_GET['removeProduct'])){
     $_SESSION['cart'] = $tempCart;
 }
 
-
+$totalPrice = 0;
 if(isset($_POST['finish_cart'])){
+    global $totalPrice;
     load_orders_data();
     $order = [
-        id => create_id($_SESSION['$orders']),
-        address => $_SESSION['user']['address'],
-        products_bought => $_SESSION['cart']['id'],
-        distribution_hub => array_rand($_SESSION['hubs'])['name'],
-        created_at => date(),
-        isDelivered => FALSE
+        'id' => create_id($_SESSION['orders']),
+        'address' => $_SESSION['user']['address'],
+        // 'products_bought' => $_SESSION['cart']['id'],
+        // 'distribution_hub' => array_rand($_SESSION['hubs'])['name'],
+        'created_at' => date(),         //argument
+        'price' => $totalPrice,
+        'isDelivered' => FALSE
     ];
     $_SESSION['orders'][] = $order; 
     save_orders_data();
+    $_SESSION['cart'] = [];
 }
 ?>
 
@@ -85,18 +90,30 @@ if(isset($_POST['finish_cart'])){
         </form>
     </div>
     <ul>
+    <div class='container row'>
+        <div class='col-4 fw-bold'>Name</div>
+        <div class='col-8 fw-bold'>Price</div>
+    </div>
         <?php
+        
         if(isset($_SESSION['cart'])){
+            global $totalPrice;
+            $totalPrice = 0;
             foreach ($_SESSION['cart'] as $productInCart){
                 $name = $productInCart['name'];
                 $price = $productInCart['price'];
+                $totalPrice += $price;
                 echo "<li class='container row'>";
-                echo "<div class='col-3'>$name</div>";
-                echo "<div class='col-6'>$price</div>";
-                echo "<div class='col-6'><form method='get' action='ProductDetails.php'><input type='submit' name='removeProduct' value=$name></form></div>";
+                echo "<div class='col-4'>$name</div>";
+                echo "<div class='col-8'>$price</div>";
+                //echo "<div class='col-3'><form method='get' action='ProductDetails.php'><input type='submit' name='removeProduct' value=$name></form></div>";
                 echo "</li>";
             }
         }
+        echo "<div class='container row'>";
+        echo "<div class='col-4 fw-bold'>Total Price</div>";
+        echo "<div class='col-8 fw-bold'>$totalPrice</div>";
+        echo "</div>";
         ?>
     </ul>
 </body>
