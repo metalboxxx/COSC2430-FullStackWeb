@@ -25,14 +25,17 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
         $array = explode(";",$line);
         if(trim($array[0]) && trim($array[1]) == $_POST['username'] && password_verify($_POST['password'], trim($array[2]))){
             $good=true;
+            $_SESSION['user_type'] = $array[0];
             break;
         }
     }
  
     if($good){
+    
     $_SESSION['use'] = $user;
         echo '<script type="text/javascript"> window.open("index.php","_self");</script>';  
     }else{
+        unset($_SESSION['user_type']);
         echo "invalid UserName or Password";
     }
     fclose($file);
