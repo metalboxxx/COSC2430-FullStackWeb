@@ -1,6 +1,5 @@
 <?php
 
-
 function load_orders_data() {
     $path_to_orders_data = '../data/orders.csv';
     $fp = fopen($path_to_orders_data,'r');
@@ -12,14 +11,14 @@ function load_orders_data() {
         $order = [];
         foreach ($first_line as $column_name) {
             $order[$column_name] = $fields[$i];
-            if ($column_name = 'products_bought'){
-                $order[$column_name] = explode('|',$order['products_bought']);
+            if ($column_name == 'products_bought'){
+                $order['products_bought'] = explode('|',$order['products_bought']);
             }
             $i++;
         }
         $orders[] = $order;
     }
-    $_SESSION['orders'] = $order;
+    $_SESSION['orders'] = $orders;
     fclose($fp);
 }
 
@@ -28,7 +27,7 @@ function save_orders_data() {
     load_orders_data();
     $path_to_orders_data = '../data/orders.csv';
     $fp = fopen($path_to_orders_data,'w');
-    $column_names = ['id','address','products_bought','distribution_hub','created_at','isDelivered'];
+    $column_names = ['id','address','products_bought','distribution_hub','created_at','price','isDelivered'];
 
     fputcsv($fp,$column_names);
     if (is_array($_SESSION['orders'])) {

@@ -1,6 +1,6 @@
 <?php
 
-require 'commons/header.php';
+require_once 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 load_products_data();
 include 'functions/create_id.php';
@@ -30,12 +30,12 @@ if (isset($_POST['act'])){
 <h1 class="text-center">Add new product</h1>
 <form action="AddNewProduct.php" method="post" class="container">
     <label for="name_product_input" class="form-label">Product Name</label>
-    <input id="name_product_input" class="form-control"type="text" name="name"><br>
+    <input id="name_product_input" class="form-control bg-light"type="text" name="name"><br>
 
     <label for="price_product_input" class="form-label">Price</label>
-    <input id="price_product_input" class="form-control"type="number" name="price"><br>
+    <input id="price_product_input" class="form-control bg-light"type="number" name="price"><br>
 
-    <input id="name_product_input" class="form-control"type="submit" name="act"><br>
+    <input id="name_product_input" class="form-control bg-primary"type="submit" name="act"><br>
 </form>
 </body>
 </html>
