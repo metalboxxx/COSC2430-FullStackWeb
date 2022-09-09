@@ -1,5 +1,7 @@
 <?php
-require 'commons/header.php';
+ob_start();
+
+require_once 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
 load_products_data();
@@ -9,6 +11,7 @@ if (isset($_POST["product_detail"])){
         $_SESSION["selected_product"]["id"] = $product[0];
         $_SESSION["selected_product"]["name"] = $product[1];
         $_SESSION["selected_product"]["price"] = $product[2];
+        $_SESSION["selected_product"]["vendor"] = $product[3];
         header("Location: ProductDetails.php");
     }
 ?>
@@ -40,38 +43,22 @@ if (isset($_POST["product_detail"])){
 </style>
 <body>
     <h2>All products in sale</h2>
-    <table style="width:50%">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>See detail</th>
-        </tr>
-        <?php
-        if (isset($_SESSION['products'])) {
-            foreach ($_SESSION['products'] as $product) {
-                echo "<tr>";
-                echo "<td>{$product["id"]}</td>";
-                echo "<td>{$product["name"]}</td>";
-                echo "<td>{$product["price"]}</td>";
-                echo "<td><a href='ProductDetails.php'><form method='post' action='ViewProducts.php'><input type='submit' name='product_detail' class='button' value=";
-                echo "{$product["id"]},{$product["name"]},{$product["price"]}";
-                echo "></form></a></td></tr>";
-            }
-        }
-        ?>
-    </table>
     
-    <div class="row">      
+    
+    <div class="container-fluid row">    
         <?php 
         foreach ($_SESSION['products'] as $product){
-            echo '<div class="container-fluid col-xl-6 col-md-4">';
-            echo "Name: "; print_r($product['name']);
-            echo '<form method="post" action="ViewProducts.php">';
-            echo '<input type="submit" name="product_detail" value=';
-            echo "[{$product["id"]},{$product["name"]},{$product["price"]}]";
-            echo '</form>';
-            echo '</div>';
+            $productId = $product["id"];
+            $productName = $product["name"];
+            $productPrice = $product["price"];
+            $productVendor = $product["vendor"];
+            echo "<div class='container-fluid col-lg-4 col-md-6'>";
+            echo "<label>Name: $productName</label>";
+            echo "<form method='post' action='ViewProducts.php'><a href='ProductDetails.php'>";
+            echo "<input type='submit' name='product_detail' class='button' value=";
+            echo "'$productId, $productName, $productPrice, $productVendor'></a>";
+            echo "</form>";
+            echo "</div>";
         }
         ?>
     </div>

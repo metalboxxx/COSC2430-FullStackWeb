@@ -4,6 +4,7 @@
 //     header("location: see_products.php");
 // }
 
+require_once "commons/header.php";
 require "file_handling/orders_file_handling.php";
 
 if(isset($_POST['deliveried'])){        

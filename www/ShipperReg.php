@@ -1,5 +1,6 @@
 <?php 
     require_once 'commons/header.php';
+    require 'file_handling/hubs_file_handling.php';
 ?>
 <?php
 if(isset($_POST["username"],$_POST["password"],$_POST["hub"]))
@@ -78,9 +79,13 @@ else
                         <div class="form-group">
                             <label for="hub" class="form-label">Choose your Distribution Hub</label>
                             <select class="form-select" aria-label="Default select example" name="hub" id="hub">
-                                <option value="HUB 1">One</option>
-                                <option value="HUB 2">Two</option>
-                                <option value="HUB 3">Three</option>
+                            <?php
+                                load_hubs_data();
+                                foreach ($_SESSION['hubs'] as $onehub) {
+                                    $nameOfHub = $onehub['name'];
+                                    echo "<option value=$nameOfHub>$nameOfHub</option>";
+                                }
+                            ?>
                             </select>
                         </div>
                         <div class="col-md-14">
