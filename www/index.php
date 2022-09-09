@@ -1,5 +1,5 @@
 <?php
-    require_once 'commons/header.php';
+    require_once 'commons/header.php'
 ?>
 <html>
 <head>

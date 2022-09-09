@@ -1,7 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION['selected_order'])){
-    header("location: see_products.php");
+
+// if (!isset($_SESSION['selected_order'])){
+//     header("location: see_products.php");
+// }
+
+require "file_handling/orders_file_handling.php";
+
+if(isset($_POST['deliveried'])){        
+    $_SESSION["selected_order"]["isDeliveried"] = TRUE;
+    save_orders_data();
 }
 ?>
 
@@ -15,11 +22,18 @@ if (!isset($_SESSION['selected_order'])){
     <title>Order Details</title>
 </head>
 <body>
-    <?php       // Display current product
+    <h1 class="text-center">Order <?php echo '$_SESSION["selected_order"]["id`"]'?></h1>
+
+    <?php       // Display current order
     echo "Current order";
     echo 'ID: ';$_SESSION["selected_order"]["id"];
     echo 'Address: ';$_SESSION["selected_order"]["address"];
     echo 'Created_at: ';$_SESSION["selected_order"]["price"];     
     ?>
+
+    <form method="post" actions="OrderDetails.php" >
+        <label for="deliveried_button">Have delivered</label>
+        <input type="submit" id="deliveried_button" name="deliveried">
+    </form>
 </body>
 </html>

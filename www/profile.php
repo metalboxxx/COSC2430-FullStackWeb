@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 require_once 'commons/header.php';
 
       if(isset($_SESSION['use']))

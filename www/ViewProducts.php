@@ -2,7 +2,6 @@
 require 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
-session_start();
 load_products_data();
 
 if (isset($_POST["product_detail"])){
@@ -55,12 +54,27 @@ if (isset($_POST["product_detail"])){
                 echo "<td>{$product["id"]}</td>";
                 echo "<td>{$product["name"]}</td>";
                 echo "<td>{$product["price"]}</td>";
-                echo "<td><form method='post' action='SeeProducts.php'><input type='submit' name='product_detail' class='button' value=";
+                echo "<td><a href='ProductDetails.php'><form method='post' action='ViewProducts.php'><input type='submit' name='product_detail' class='button' value=";
                 echo "{$product["id"]},{$product["name"]},{$product["price"]}";
-                echo "></form></td></tr>";
+                echo "></form></a></td></tr>";
             }
         }
         ?>
     </table>
+    
+    <div class="row">      
+        <?php 
+        foreach ($_SESSION['products'] as $product){
+            echo '<div class="container-fluid col-xl-6 col-md-4">';
+            echo "Name: "; print_r($product['name']);
+            echo '<form method="post" action="ViewProducts.php">';
+            echo '<input type="submit" name="product_detail" value=';
+            echo "[{$product["id"]},{$product["name"]},{$product["price"]}]";
+            echo '</form>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+
 </body>
 </html>
