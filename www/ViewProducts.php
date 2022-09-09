@@ -6,12 +6,11 @@ require 'file_handling/products_file_handling.php';
 
 load_products_data();
 
-if (isset($_POST["product_detail"])){
-        $product = explode(",",$_POST["product_detail"]);
-        $_SESSION["selected_product"]["id"] = $product[0];
-        $_SESSION["selected_product"]["name"] = $product[1];
-        $_SESSION["selected_product"]["price"] = $product[2];
-        $_SESSION["selected_product"]["vendor"] = $product[3];
+if (isset($_POST["get_product_detail"])){
+        $_SESSION["selected_product"]["id"] = $_POST["id"];
+        $_SESSION["selected_product"]["name"] = $_POST["name"];
+        $_SESSION["selected_product"]["price"] = $_POST["price"];
+        $_SESSION["selected_product"]["vendor"] = $_POST["vendor"];
         header("Location: ProductDetails.php");
     }
 ?>
@@ -43,25 +42,20 @@ if (isset($_POST["product_detail"])){
 </style>
 <body>
     <h2>All products in sale</h2>
-    
-    
-    <div class="container-fluid row">    
-        <?php 
-        foreach ($_SESSION['products'] as $product){
-            $productId = $product["id"];
-            $productName = $product["name"];
-            $productPrice = $product["price"];
-            $productVendor = $product["vendor"];
-            echo "<div class='container-fluid col-lg-4 col-md-6'>";
-            echo "<label>Name: $productName</label>";
-            echo "<form method='post' action='ViewProducts.php'><a href='ProductDetails.php'>";
-            echo "<input type='submit' name='product_detail' class='button' value=";
-            echo "'$productId, $productName, $productPrice, $productVendor'></a>";
-            echo "</form>";
-            echo "</div>";
+    <div class="container-fluid row">
+    <?php
+        if (isset($_SESSION['products'])) {
+            foreach ($_SESSION['products'] as $product) {
+                echo "<form method='post' action='ViewProducts.php'>";
+                echo "<input class='form-control  shadow p-3 mb-5 bg-body rounded ' type='submit' name='get_product_detail' value='{$product["name"]} - Price: {$product["price"]}'>";
+                echo "<input type='hidden' name='id' value='{$product["id"]}'>";
+                echo "<input type='hidden' name='name' value={$product["name"]}>";
+                echo "<input type='hidden' name='price' value={$product["price"]}>";
+                echo "<input type='hidden' name='vendor' value={$product["vendor"]}>";
+                echo "</form>";
+            }
         }
-        ?>
+    ?>
     </div>
-
 </body>
 </html>
