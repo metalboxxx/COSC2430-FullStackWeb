@@ -30,6 +30,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
     }
  
     if($good){
+    
     $_SESSION['use'] = $user;
         echo '<script type="text/javascript"> window.open("index.php","_self");</script>';  
     }else{

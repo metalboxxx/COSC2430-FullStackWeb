@@ -24,7 +24,6 @@ function load_orders_data() {
 
 
 function save_orders_data() {
-    load_orders_data();
     $path_to_orders_data = '../data/orders.csv';
     $fp = fopen($path_to_orders_data,'w');
     $column_names = ['id','address','products_bought','distribution_hub','created_at','price','isDelivered'];
@@ -33,6 +32,7 @@ function save_orders_data() {
     if (is_array($_SESSION['orders'])) {
         foreach ($_SESSION['orders'] as $order){
             $order['products_bought'] = implode("|", $order['products_bought']);
+            print_r($order);        //debugging
             fputcsv($fp, $order);
         }
     }

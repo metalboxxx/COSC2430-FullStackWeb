@@ -1,5 +1,6 @@
 <?php
-    require_once 'commons/header.php'
+    require_once 'commons/header.php';
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
 ?>
 <html>
 <head>

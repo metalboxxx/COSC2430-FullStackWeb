@@ -35,7 +35,7 @@ if (isset($_POST['act'])){
     <label for="price_product_input" class="form-label">Price</label>
     <input id="price_product_input" class="form-control bg-light"type="number" name="price"><br>
 
-    <input id="name_product_input" class="form-control bg-primary"type="submit" name="act"><br>
+    <input id="name_product_input" class="form-control bg-primary text-white btn"type="submit" name="act"><br>
 </form>
 </body>
 </html>
