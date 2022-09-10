@@ -74,3 +74,7 @@ load_products_data();
     </table>
 </body>
 </html>
+
+<?php
+require_once 'commons/footer.php'
+?>

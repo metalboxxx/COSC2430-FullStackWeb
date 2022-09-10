@@ -53,6 +53,7 @@ if (isset($_POST['act'])){
 </body>
 </html>
 
-
-
+<?php
+require_once 'commons/footer.php'
+?>
 

@@ -52,7 +52,7 @@ else
     require_once 'ShipperReg.php';
 }
 ?>
-
+<html>
 <body>
     <script src="register.js"></script>
 	<div class="container mt-5">
@@ -98,13 +98,8 @@ else
             </div>
         </div>   
     </div>
-    <footer class="container-fluid text-center" style="position: relative;">
-                <ul class="nav justify-content-center border-bottom pb-1 mb-1">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                </ul>
-                <p class="text-center text-muted">© 2022 Copyright: Group 33</p>       
-    </footer>
 </body>
+</html>
+<?php
+require_once 'commons/footer.php'
+?>

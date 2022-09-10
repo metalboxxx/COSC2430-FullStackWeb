@@ -6,11 +6,7 @@
 <head>
     <title>User Login</title>
 </head>
-<body>
-
-
-    
-        
+<body>        
     <div class="w-100 overflow-hidden bg-gray-100" id="top">
   
         <div class="container position-relative">
@@ -29,28 +25,10 @@
     <div class="row d-flex justify-content-center">
         <div class="col-lg-8 aos-init aos-animate" data-aos="fade-down"><h2 class="display-6">There are some really good purposes for us to create this application. And if you found this website, I guess we are having the same purpose. Please feel free to use it!</h2></div>
     </div>
-        <!-- <div class="p-3 mb-2 bg-info text-white">
-            <h1>Online Business Card for Students</h1>
-        </div>
-        <div class="button">
-                <ul class="navigation">
-                    <a href="index.php" class="btn btn-default"><li>Home</li></a>
-                    <a href="#" class="btn btn-default"><li>Student List</li></a>
-                    <a href="#" class="btn btn-default"><li>About Us</li></a>
-                </ul>
-            </div> -->
-            <footer class="container-fluid text-center">
-                <ul class="nav justify-content-center border-bottom pb-1 mb-1">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                </ul>
-                <p class="text-center text-muted">© 2022 Copyright: Group 33</p>
-            </footer>
-        <!-- <footer class="container-fluid text-center" style="position: fixed;">
-        <p>© 2022 Copyright: Group 33</p> -->
 </body>
 </html>
 
+<?php
+require_once 'commons/footer.php'
+?>
 

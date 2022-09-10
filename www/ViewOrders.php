@@ -102,3 +102,7 @@ if (isset($_POST["get_order_detail"])){
     </div>
 </body>
 </html>
+
+<?php
+require_once 'commons/footer.php'
+?>
