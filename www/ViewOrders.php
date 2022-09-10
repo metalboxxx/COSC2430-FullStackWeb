@@ -66,6 +66,7 @@ if (isset($_POST["get_order_detail"])){
             <th>Products</th>
             <th>Price</th>
             <th>Created at</th>
+            <th>Distribution Hub</th>
             <th>Status</th>
             <th>View</th>
         </tr>
@@ -80,6 +81,7 @@ if (isset($_POST["get_order_detail"])){
                     echo "<td>{$order["products_bought"]}</td>";
                     echo "<td>{$order["price"]}</td>";
                     echo "<td>{$order["created_at"]}</td>";
+                    echo "<td>{$order["distribution_hub"]}</td>";
                     echo "<td>{$order["status"]}</td>";
                     
                     echo "<td><form method='post' action='ViewOrders.php'>";
@@ -89,6 +91,7 @@ if (isset($_POST["get_order_detail"])){
                     echo "<input type='hidden' name='products_bought' value={$order["products_bought"]}>";
                     echo "<input type='hidden' name='created_at' value={$order["created_at"]}>";
                     echo "<input type='hidden' name='price' value={$order["price"]}>";
+                    echo "<input type='hidden' name='distribution_hub' value={$order["distribution_hub"]}>";
                     echo "<input type='hidden' name='status' value={$order["status"]}>";
                     echo "</form></td></tr>";
                 }

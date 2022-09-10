@@ -49,17 +49,22 @@ if(isset($_POST['canceled'])){
     $price = $_SESSION["selected_order"]["price"];
     $products_bought = $_SESSION["selected_order"]["products_bought"];
     $created_at = $_SESSION["selected_order"]["created_at"];
+    $distribution_hub = $_SESSION["selected_order"]["distribution_hub"];
     echo "<div class='row container'>";
     echo "<div class= 'col-12'>Current product</div>";
     echo "<div class='col-4'>ID: </div> <div class='col-8'>$id</div>";
     echo "<div class='col-4'>Address: </div> <div class='col-8'>$address</div>";
     echo "<div class='col-4'>Products ID: </div> <div class='col-8'>$products_bought</div>";
     echo "<div class='col-4'>Price: </div> <div class='col-8'>$price</div>";
-    echo "<div class='col-4'>Created_at: </div><div class='col-8'>$created_at</div>";  
+    echo "<div class='col-4'>Created at: </div><div class='col-8'>$created_at</div>";  
+    echo "<div class='col-4'>Distribution hub: </div><div class='col-8'>$distribution_hub</div>";  
+    
+    
+
     echo "</div>";  
     ?>
 
-    <form method="post" actions="OrderDetails.php"class="form-control text-center" >
+    <form method="post" actions="OrderDetails.php"class="form-control text-center container" >
         <input type="submit" id="deliveried_button" name="deliveried" value="Have delivered" class="form-control btn btn-primary">
         <input type="submit" id="deliveried_button" name="canceled" value="Canceled" class="form-control btn btn-danger">
     </form>
