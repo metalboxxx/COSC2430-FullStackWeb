@@ -34,27 +34,27 @@ if(isset($_GET['reset_cart'])){
 }
 
 
-if (isset($_GET["remove_product"])){
-    $tempCart =[];
-    $indexOfRemove = 0;
-    $indexCount = 0;
-    foreach($_SESSION['cart'] as $product){
-        global $indexOfRemove;
-        if($product['name'] == $_GET['name']){
-            break;
-        }
-        $indexOfRemove++;
-    }
-    foreach($_SESSION['cart'] as $product){
-        global $indexOfRemove;
-        global $indexCount;
-        if($indexCount == $indexOfRemove){
-            continue;
-        }
-        $tempCart[] = $product;
-    }
-    $_SESSION['cart'] = $tempCart;
-}
+// if (isset($_GET["remove_product"])){
+//     $tempCart =[];
+//     $indexOfRemove = 0;
+//     $indexCount = 0;
+//     foreach($_SESSION['cart'] as $product){
+//         global $indexOfRemove;
+//         if($product['name'] == $_GET['name']){
+//             break;
+//         }
+//         $indexOfRemove++;
+//     }
+//     foreach($_SESSION['cart'] as $product){
+//         global $indexOfRemove;
+//         global $indexCount;
+//         if($indexCount == $indexOfRemove){
+//             continue;
+//         }
+//         $tempCart[] = $product;
+//     }
+//     $_SESSION['cart'] = $tempCart;
+// }
 
 
 if(isset($_POST['finish_cart'])){
@@ -112,12 +112,14 @@ if(isset($_POST['finish_cart'])){
     $name = $_SESSION['selected_product']['name'];
     $price = $_SESSION["selected_product"]["price"];
     $vendor = $_SESSION["selected_product"]["vendor"];
+    $description = $_SESSION["selected_product"]["description"];
     echo "<div class='row container'>";
     echo "<div class= 'col-12'>Current product</div>";
     echo "<div class='col-4'>ID: </div> <div class='col-8'>$id</div>";
     echo "<div class='col-4'>Name: </div> <div class='col-8'>$name</div>";
     echo "<div class='col-4'>Price: </div> <div class='col-8'>$price</div>";
     echo "<div class='col-4'>Vendor: </div><div class='col-8'>$vendor</div>";  
+    echo "<div class='col-4'>Description: </div><div class='col-8'>$description</div>";  
     echo "</div>";   
     ?>
     <div class="container">

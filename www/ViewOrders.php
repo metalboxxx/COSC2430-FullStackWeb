@@ -81,11 +81,11 @@ if (isset($_POST["get_order_detail"])){
                     echo "<td>{$order["price"]}</td>";
                     echo "<td>{$order["created_at"]}</td>";
                     echo "<td>{$order["status"]}</td>";
-    
+                    
                     echo "<td><form method='post' action='ViewOrders.php'>";
                     echo "<input type='submit' name='get_order_detail' value='Click to view'>";
                     echo "<input type='hidden' name='id' value='{$order["id"]}'>";
-                    echo "<input type='hidden' name='address' value={$order["address"]}>";
+                    echo "<input type='hidden' name='address' value='{$order["address"]}'>";
                     echo "<input type='hidden' name='products_bought' value={$order["products_bought"]}>";
                     echo "<input type='hidden' name='created_at' value={$order["created_at"]}>";
                     echo "<input type='hidden' name='price' value={$order["price"]}>";

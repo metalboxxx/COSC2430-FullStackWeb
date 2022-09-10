@@ -1,6 +1,9 @@
-id,name,vendor,price
-337,"Book Hay",Chill,1234
-338,"Book Hay",Bill,1234
-339,Chair,Kiet,2255
-340,Coffe,metalboxxxVen,56
-341,"Coffee ",,15
+id,name,vendor,price,description
+337,"Book Hay",Chill,1234,cool
+338,"Book Hay",Bill,1234,nice
+339,Chair,Kiet,2255,beautiful
+340,Coffe,metalboxxxVen,56,good
+341,sdffgdsfds,metalboxxxVen,23423,dsfsdafsda
+342,dfgdfsgsdfgsdfg,metalboxxxVen,43543543,dsfgsdfgdsfgsdfgdfs
+343,dsfsdafasdfdsf,metalboxxxVen,1234,ASDFDSAFSZDF
+344,JacketLongThngy,metalboxxxVen,1234565,"Very Cool Indeed"
