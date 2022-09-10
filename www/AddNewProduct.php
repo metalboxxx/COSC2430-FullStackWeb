@@ -14,6 +14,7 @@ if (isset($_POST['act'])){
     ];
     $_SESSION['products'][] = $product;
     save_products_data();
+    header("Location: VendorViewProducts.php");
 }
 
 ?>
