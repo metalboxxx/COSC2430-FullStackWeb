@@ -10,6 +10,7 @@ require "file_handling/orders_file_handling.php";
 if(isset($_POST['deliveried'])){        
     $_SESSION["selected_order"]["isDeliveried"] = TRUE;
     save_orders_data();
+    header('location: ViewOrders.php');     //Subject to change name
 }
 ?>
 
@@ -26,10 +27,17 @@ if(isset($_POST['deliveried'])){
     <h1 class="text-center">Order <?php echo '$_SESSION["selected_order"]["id`"]'?></h1>
 
     <?php       // Display current order
-    echo "Current order";
-    echo 'ID: ';$_SESSION["selected_order"]["id"];
-    echo 'Address: ';$_SESSION["selected_order"]["address"];
-    echo 'Created_at: ';$_SESSION["selected_order"]["price"];     
+    $id = $_SESSION['selected_order']['id'];
+    $address = $_SESSION['selected_order']['address'];
+    $price = $_SESSION["selected_order"]["price"];
+    $created_at = $_SESSION["selected_order"]["created_at"];
+    echo "<div class='row container'>";
+    echo "<div class= 'col-12'>Current product</div>";
+    echo "<div class='col-4'>ID: </div> <div class='col-8'>$id</div>";
+    echo "<div class='col-4'>Address: </div> <div class='col-8'>$address</div>";
+    echo "<div class='col-4'>Price: </div> <div class='col-8'>$price</div>";
+    echo "<div class='col-4'>Created_at: </div><div class='col-8'>$created_at</div>";  
+    echo "</div>";  
     ?>
 
     <form method="post" actions="OrderDetails.php" >

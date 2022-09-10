@@ -24,7 +24,6 @@ function load_orders_data() {
 
 
 function save_orders_data() {
-    load_orders_data();
     $path_to_orders_data = '../data/orders.csv';
     $fp = fopen($path_to_orders_data,'w');
     $column_names = ['id','address','products_bought','distribution_hub','created_at','price','isDelivered'];

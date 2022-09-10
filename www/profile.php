@@ -21,8 +21,7 @@ require_once 'commons/header.php';
                 echo "<strong>Address: </strong>" .$arr[5]."<br>";
                 echo "<br>";
                 echo '<button type="button" class="btn btn-danger"><a class="link-light" href="logout.php">Log Out</a></li></button>';
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['address'] = $arr[5];
+
             }
             //Display vendor profile after logged in
             if(strpos($line, $_SESSION['use'])  !== false && $arr[0] == 'Vendor' ){
@@ -34,8 +33,7 @@ require_once 'commons/header.php';
                 echo "<strong>Bussiness Address: </strong>" .$arr[4]."<br>";
                 echo "<br>";
                 echo '<button type="button" class="btn btn-danger"><a class="link-light" href="logout.php">Log Out</a></button>';
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['address'] = $arr[4];
+        
             }
             //Display shipper profile after logged in
             if(strpos($line, $_SESSION['use'])  !== false && $arr[0] == 'Shipper' ){
@@ -46,8 +44,6 @@ require_once 'commons/header.php';
                 echo "<strong>Distribution Hub: </strong>" .$arr[3]."<br>";
                 echo "<br>";
                 echo '<button type="button" class="btn btn-danger"><a class="link-light" href="logout.php">Log Out</a></li></button>';
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['hub'] = $arr[3];
             }
             }
       }

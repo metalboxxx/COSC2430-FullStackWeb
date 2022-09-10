@@ -7,7 +7,7 @@ require 'file_handling/products_file_handling.php';
 require 'file_handling/orders_file_handling.php';
 require 'file_handling/hubs_file_handling.php';
 
-load_hubs_data();
+
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
     if (isset($_SESSION['cart'])){
@@ -33,19 +33,36 @@ if(isset($_GET['removeProduct'])){
     $_SESSION['cart'] = $tempCart;
 }
 
-$totalPrice = 0;
 if(isset($_POST['finish_cart'])){
-    global $totalPrice;
     load_orders_data();
+    load_hubs_data();
+
+    $random_hub;
+    $hubs_ammount = count($_SESSION['hubs']);
+    $rand_hub_index = random_int(0,$hubs_ammount-1);
+    for ($i=0; $i<$hubs_ammount; $i++){
+        global $random_hub;
+        if ($i == $rand_hub_index){
+            $random_hub = $_SESSION['hubs'][$i];
+        }
+    }
+
+    $array_products = [];
+    foreach ($_SESSION['cart'] as $product){
+        global $array_products;
+        $array_IDproducts[] = $product['id'];
+    }
+
     $order = [
         'id' => create_id($_SESSION['orders']),
         'address' => $_SESSION['user']['address'],
-        // 'products_bought' => $_SESSION['cart']['id'],
-        // 'distribution_hub' => array_rand($_SESSION['hubs'])['name'],
-        'created_at' => date(),         //argument
-        'price' => $totalPrice,
-        'isDelivered' => FALSE
+        'products_bought' => $array_IDproducts,
+        'distribution_hub' =>  $random_hub['name'],
+        'created_at' => date("Y-m-d H:i:s"),         
+        'price' => $_SESSION['totalPrice'],
+        'isDelivered' => 'false'
     ];
+    
     $_SESSION['orders'][] = $order; 
     save_orders_data();
     $_SESSION['cart'] = [];
@@ -82,11 +99,11 @@ if(isset($_POST['finish_cart'])){
     ?>
     <div class="container">
         <form method="get" action="ProductDetails.php">
-            <input id="add_product_submit" class="form-control shadow p-3 mb-5 bg-body rounded" type="submit" name="add_product" value="Add to cart">
-            <input id="reset_cart_submit" class="form-control shadow p-3 mb-5 bg-body rounded" type="submit" name="reset_cart" value="Reset cart"> 
+            <input id="add_product_submit" class="form-control bg-primary text-white btn shadow p-3 mb-5 rounded" type="submit" name="add_product" value="Add to cart">
+            <input id="reset_cart_submit" class="form-control bg-primary text-white btn shadow p-3 mb-5 rounded" type="submit" name="reset_cart" value="Reset cart"> 
         </form>
         <form method="post" action="ProductDetails.php">
-            <input id="submit_cart_submit" class="form-control  shadow p-3 mb-5 bg-body rounded " type="submit" name="finish_cart" value="Finish">
+            <input id="submit_cart_submit" class="form-control bg-primary text-white btn shadow p-3 mb-5 rounded " type="submit" name="finish_cart" value="Finish">
         </form>
     </div>
     <ul>
@@ -97,12 +114,12 @@ if(isset($_POST['finish_cart'])){
         <?php
         
         if(isset($_SESSION['cart'])){
-            global $totalPrice;
-            $totalPrice = 0;
+
+            $_SESSION['totalPrice'] = 0;
             foreach ($_SESSION['cart'] as $productInCart){
                 $name = $productInCart['name'];
                 $price = $productInCart['price'];
-                $totalPrice += $price;
+                $_SESSION['totalPrice'] += $price;
                 echo "<li class='container row'>";
                 echo "<div class='col-4'>$name</div>";
                 echo "<div class='col-8'>$price</div>";
@@ -110,10 +127,13 @@ if(isset($_POST['finish_cart'])){
                 echo "</li>";
             }
         }
-        echo "<div class='container row'>";
-        echo "<div class='col-4 fw-bold'>Total Price</div>";
-        echo "<div class='col-8 fw-bold'>$totalPrice</div>";
-        echo "</div>";
+        if(isset($_SESSION['totalPrice'])){
+            $totalPrice = $_SESSION['totalPrice'];
+            echo "<div class='container row'>";
+            echo "<div class='col-4 fw-bold'>Total Price</div>";
+            echo "<div class='col-8 fw-bold'>$totalPrice</div>";
+            echo "</div>";
+        }
         ?>
     </ul>
 </body>
