@@ -49,15 +49,17 @@ if (isset($_POST["get_product_detail"])){
     <div class="container-fluid row">
     <?php
         if (isset($_SESSION['products'])) {
+            echo "<div class='row'>";
             foreach ($_SESSION['products'] as $product) {
-                echo "<form method='post' action='ViewProducts.php'>";
-                echo "<input class='form-control  shadow p-3 mb-5 bg-body rounded ' type='submit' name='get_product_detail' value='{$product["name"]} - Price: {$product["price"]}'>";
+                echo "<form method='post' action='ViewProducts.php' class='col-md-4 col-sm-6'>";
+                echo "<input class='form-control shadow p-3 mb-5 bg-body rounded ' type='submit' name='get_product_detail' value='{$product["name"]} - Price: {$product["price"]}'>";
                 echo "<input type='hidden' name='id' value='{$product["id"]}'>";
                 echo "<input type='hidden' name='name' value={$product["name"]}>";
                 echo "<input type='hidden' name='price' value={$product["price"]}>";
                 echo "<input type='hidden' name='vendor' value={$product["vendor"]}>";
                 echo "</form>";
             }
+            echo "</div>";
         }
     ?>
     </div>
