@@ -7,7 +7,7 @@ Go to www file root and start the server there. You can type
 php -S localhost:4200
 
 
-URL of demo video:
+URL of demo video: https://youtu.be/rCQqXWQ0Adw
 
 Accounts for testing purposes
 Customer
