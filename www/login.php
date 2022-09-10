@@ -24,14 +24,29 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
         $line = fgets($file);
         $array = explode(";",$line);
         if(trim($array[0]) && trim($array[1]) == $_POST['username'] && password_verify($_POST['password'], trim($array[2]))){
-            $good=true;
+            if($array[0] == 'Customer' ){
+                $_SESSION['user']['username'] = $arr[1];
+                $_SESSION['user']['address'] = $arr[5];
+                $good=true;
+                break;   
+            }
+            if($array[0] == 'Vendor' ){
+                $_SESSION['user']['username'] = $arr[1];
+                $_SESSION['user']['address'] = $arr[4];
+                $good=true;
             break;
+            }
+            if($array[0] == 'Shipper' ){
+                $_SESSION['user']['username'] = $arr[1];
+                $_SESSION['user']['hub'] = $arr[3];
+                $good=true;
+            break;
+            }
         }
     }
  
     if($good){
-    
-    $_SESSION['use'] = $user;
+        $_SESSION['use'] = $user;
         echo '<script type="text/javascript"> window.open("index.php","_self");</script>';  
     }else{
         echo "invalid UserName or Password";

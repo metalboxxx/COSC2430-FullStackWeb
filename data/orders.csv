@@ -1,8 +1,4 @@
 id,address,products_bought,distribution_hub,created_at,price,isDelivered
-11,"22 Ly Tu Trong",Array,Thuan_Phat,12-21-2021,4444,false
-12,"38 Nguyen Van Cu",Array,Phuong_Trang,12-21-2021,6666,false
 13,"47 Lam Van Ben",337|337|337,Le_Nghia,"2022-09-10 04:22:01",3702,false
-14,"47 Lam Van Ben",337|337|337|337,Phuong_Trang,"2022-09-10 04:22:21",4936,false
-15,"47 Lam Van Ben",338|338|338,Le_Nghia,"2022-09-10 04:25:19",3702,false
-16,"47 Lam Van Ben",337|337,Thuan_Phat,"2022-09-10 04:27:13",2468,false
-17,"47 Lam Van Ben",337|337|337,Le_Nghia,"2022-09-10 04:27:15",3702,false
+15,"47 Lam Van Ben",338|338,Le_Nghia,"2022-09-10 04:51:23",2468,false
+16,,338|338|338,Le_Nghia,"2022-09-10 04:52:36",3702,false

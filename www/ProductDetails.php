@@ -65,7 +65,6 @@ if(isset($_POST['finish_cart'])){
     
     $_SESSION['orders'][] = $order; 
     save_orders_data();
-
     $_SESSION['cart'] = [];
 }
 ?>
@@ -128,11 +127,13 @@ if(isset($_POST['finish_cart'])){
                 echo "</li>";
             }
         }
-        $totalPrice = $_SESSION['totalPrice'];
-        echo "<div class='container row'>";
-        echo "<div class='col-4 fw-bold'>Total Price</div>";
-        echo "<div class='col-8 fw-bold'>$totalPrice</div>";
-        echo "</div>";
+        if(isset($_SESSION['totalPrice'])){
+            $totalPrice = $_SESSION['totalPrice'];
+            echo "<div class='container row'>";
+            echo "<div class='col-4 fw-bold'>Total Price</div>";
+            echo "<div class='col-8 fw-bold'>$totalPrice</div>";
+            echo "</div>";
+        }
         ?>
     </ul>
 </body>
