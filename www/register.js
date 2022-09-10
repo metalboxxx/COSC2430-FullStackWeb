@@ -10,7 +10,7 @@ function FormValidate(){
 
     var password = document.getElementById('password').value;
     var errorPassword = document.getElementById('errorPassword');
-    var regexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
+    var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/;
 
     var address = document.getElementById('address').value;
     var errorAddress = document.getElementById('errorAddress');
@@ -38,7 +38,7 @@ function FormValidate(){
         return false;
 
     }else if(!regexPassword.test(password)){
-        errorPassword.innerHTML = "Password must be from 8 to 20 characters. Each password must contain at least 1 lower case letter, at least 1 upper case letter, at least 1 digit!";
+        errorPassword.innerHTML = "contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
         return false;
     }else{
         errorPassword.innerHTML = '';
@@ -98,7 +98,7 @@ function VendorRegisterValidate(){
     var regexName = /^[a-zA-Z0-9]{8,15}$/;
     var password = document.getElementById('password').value;
     var errorPassword = document.getElementById('errorPassword');
-    var regexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
+    var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/;
     var bname = document.getElementById('bsname').value;
     var errorBussinessName = document.getElementById('errorBussinessName');
     var badd = document.getElementById('bsadd').value;
@@ -120,7 +120,7 @@ function VendorRegisterValidate(){
         return false;
 
     }else if(!regexPassword.test(password)){
-        errorPassword.innerHTML = "Password must be from 8 to 20 characters. Each password must contain at least 1 lower case letter, at least 1 upper case letter, at least 1 digit!";
+        errorPassword.innerHTML = "contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
         return false;
     }else{
         errorPassword.innerHTML = '';
@@ -162,7 +162,7 @@ function ShipperRegisterValidate(){
     var regexName = /^[a-zA-Z0-9]{8,15}$/;
     var password = document.getElementById('password').value;
     var errorPassword = document.getElementById('errorPassword');
-    var regexPassword = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
+    var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/;
 
     if (username == '' || username == null) {
         errorUserName.innerHTML = "Please fill in this field!";

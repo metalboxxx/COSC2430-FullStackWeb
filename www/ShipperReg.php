@@ -20,13 +20,12 @@ if(isset($_POST["username"],$_POST["password"],$_POST["hub"]))
     }
     fclose($file);
  
-    // register user or pop up message
-    $target_path = "../img/";
+    
+    $target_path = "img/";
     $og_file = $_FILES["profilePicture"]["name"];
     $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
 
-    // $directory = 'uploads/';
-    // move_uploaded_file($og_file, $directory);
+    //Existed username announce
     if( $finduser )
     {
         echo $_POST["username"];
@@ -34,12 +33,12 @@ if(isset($_POST["username"],$_POST["password"],$_POST["hub"]))
         require_once 'ShipperReg.php';
     }
     else
-    {
-        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/', $_POST["password"]) && $_POST["hub"]){
+    {   //Create account
+        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/', $_POST["password"]) && $_POST["hub"]){
             $file = fopen("../data/account.db", "a");
             fputs($file,"Shipper;".$_POST["username"].";".password_hash($_POST["password"], PASSWORD_DEFAULT).";".$_POST["hub"].";".$og_file."\r\n");
             fclose($file);
-            echo "Shipper account".$_POST["username"];
+            echo "Shipper account: ".$_POST["username"];
             echo " registered successfully!";  
         }
         else{
