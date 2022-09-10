@@ -1,8 +1,6 @@
-id,name,vendor,price
-337,"Book Hay",Chill,1234
-338,"Book Hay",Bill,1234
-339,Chair,Kiet,2255
-340,Coffe,metalboxxxVen,56
-341,Shirt,,100
-342,Shirt,metalboxxxVen,100
-343,Shirt,metalboxxxVen,125
+id,name,vendor,price,description
+337,"Book Hay",Chill,1234,cool
+339,Chair,Kiet,2255,beautiful
+340,Coffe,metalboxxxVen,56,good
+341,LongJacket,TheVendor,225,"Made out of crocodile skin!"
+342,LeatherShoe,TheVendor,330,"Made out of crocodile skin!"
