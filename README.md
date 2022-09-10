@@ -1,3 +1,5 @@
+github: https://github.com/metalboxxx/COSC2430-FullStackWeb
+
 # COSC2430-FullStackWeb
 Phan Quốc Thắng - S3881388
 Nguyễn Hữu Minh Khang - s3927067
