@@ -26,25 +26,25 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
         if(trim($array[0]) && trim($array[1]) == $_POST['username'] && password_verify($_POST['password'], trim($array[2]))){
 
             if($array[0] == 'Customer' ){
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['address'] = $arr[5];
-                $_SESSION["user_type"] = "Customer";
+                $_SESSION['user']['username'] = $array[1];
+                $_SESSION['user']['address'] = $array[5];
+                $_SESSION['user_type'] = 'Customer';
                 $good=true;
                 break;   
             }
             if($array[0] == 'Vendor' ){
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['address'] = $arr[4];
-                $_SESSION["user_type"] = "Vendor";
+                $_SESSION['user']['username'] = $array[1];
+                $_SESSION['user']['address'] = $array[4];
+                $_SESSION['user_type'] = 'Vendor';
                 $good=true;
               break;
             }
             if($array[0] == 'Shipper' ){
-                $_SESSION['user']['username'] = $arr[1];
-                $_SESSION['user']['distribution_hub'] = $arr[3];
-                $_SESSION["user_type"] = "Shipper";
+                $_SESSION['user']['username'] = $array[1];
+                $_SESSION['user']['distribution_hub'] = $array[3];
+                $_SESSION['user_type'] = 'Shipper';
                 $good=true;
-                break;
+              break;
             }
         }
     }
@@ -61,6 +61,7 @@ if(isset($_POST['login']))   // it checks whether the user clicked login button 
     else{
         require_once 'login.php';
     }
+ 
 }
 ?>
 

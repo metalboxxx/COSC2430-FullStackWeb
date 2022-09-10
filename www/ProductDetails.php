@@ -7,6 +7,7 @@ require 'file_handling/products_file_handling.php';
 require 'file_handling/orders_file_handling.php';
 require 'file_handling/hubs_file_handling.php';
 
+load_products_data();
 
 if(!isset($_SESSION['use'])){
     header("location: index.php");
@@ -28,19 +29,33 @@ if (isset($_GET['add_product'])){
 }
 
 if(isset($_GET['reset_cart'])){
+    $_SESSION['totalPrice'] = 0;
     $_SESSION['cart'] = [];
 }
 
-if(isset($_GET['removeProduct'])){
+
+if (isset($_GET["remove_product"])){
     $tempCart =[];
-    foreach($cart as $product){
-        if($product['name'] == $_GET['removeProduct']){
+    $indexOfRemove = 0;
+    $indexCount = 0;
+    foreach($_SESSION['cart'] as $product){
+        global $indexOfRemove;
+        if($product['name'] == $_GET['name']){
+            break;
+        }
+        $indexOfRemove++;
+    }
+    foreach($_SESSION['cart'] as $product){
+        global $indexOfRemove;
+        global $indexCount;
+        if($indexCount == $indexOfRemove){
             continue;
         }
         $tempCart[] = $product;
     }
     $_SESSION['cart'] = $tempCart;
 }
+
 
 if(isset($_POST['finish_cart'])){
     load_orders_data();
@@ -61,7 +76,6 @@ if(isset($_POST['finish_cart'])){
         global $array_products;
         $array_IDproducts[] = $product['id'];
     }
-
     $order = [
         'id' => create_id($_SESSION['orders']),
         'address' => $_SESSION['user']['address'],
@@ -69,7 +83,7 @@ if(isset($_POST['finish_cart'])){
         'distribution_hub' =>  $random_hub['name'],
         'created_at' => date("Y-m-d H:i:s"),         
         'price' => $_SESSION['totalPrice'],
-        'isDelivered' => 'false'
+        'status' => 'active'
     ];
     
     $_SESSION['orders'][] = $order; 
@@ -115,35 +129,41 @@ if(isset($_POST['finish_cart'])){
             <input id="submit_cart_submit" class="form-control bg-primary text-white btn shadow p-3 mb-5 rounded " type="submit" name="finish_cart" value="Finish">
         </form>
     </div>
-    <ul>
-    <div class='container row'>
-        <div class='col-4 fw-bold'>Name</div>
-        <div class='col-8 fw-bold'>Price</div>
-    </div>
-        <?php
+    <table style="width:60%" class="container text-center">
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    <?php
         
-        if(isset($_SESSION['cart'])){
-
+        if (isset($_SESSION['cart'])) {
+            $i = 1;
             $_SESSION['totalPrice'] = 0;
-            foreach ($_SESSION['cart'] as $productInCart){
-                $name = $productInCart['name'];
+            foreach ($_SESSION['cart'] as $productInCart) {      
                 $price = $productInCart['price'];
                 $_SESSION['totalPrice'] += $price;
-                echo "<li class='container row'>";
-                echo "<div class='col-4'>$name</div>";
-                echo "<div class='col-8'>$price</div>";
-                //echo "<div class='col-3'><form method='get' action='ProductDetails.php'><input type='submit' name='removeProduct' value=$name></form></div>";
-                echo "</li>";
+
+                echo "<tr>";
+                echo "<td>{$i}</td>";
+                echo "<td>{$productInCart["name"]}</td>";
+                echo "<td>{$productInCart["price"]}</td>";
+
+                // echo "<td><form method='get' action='ProductDetails.php'>";
+                // echo "<input type='submit' name='remove_product' value='Click to remove'>";
+                // echo "<input type='hidden' name='name' value='{$productInCart["name"]}'>";
+                // echo "<input type='hidden' name='price' value={$productInCart["price"]}>";
+                // echo "</form></td>";
+                $i++;
             }
+            echo "<tr>";
+            echo "<td class='text-bold'>Total Price</td>";
+            echo "<td></td>";
+            echo "<td class='text-bold'>{$_SESSION['totalPrice']}</td></tr>";
         }
-        if(isset($_SESSION['totalPrice'])){
-            $totalPrice = $_SESSION['totalPrice'];
-            echo "<div class='container row'>";
-            echo "<div class='col-4 fw-bold'>Total Price</div>";
-            echo "<div class='col-8 fw-bold'>$totalPrice</div>";
-            echo "</div>";
-        }
-        ?>
-    </ul>
+        
+    ?>
+    </table>
+    </div>
 </body>
 </html>

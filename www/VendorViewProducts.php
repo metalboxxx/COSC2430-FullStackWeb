@@ -1,16 +1,24 @@
 <?php
 ob_start();
 
+
 require_once 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
-load_products_data();
-
-
+if(!isset($_SESSION['use'])){
+    header("locatioin: index.php");
+}
 
 if ($_SESSION["user_type"] == "Customer") {
     header("Location: ViewProducts.php");
 }
+if ($_SESSION["user_type"] == "Shipper") {
+    header("Location: ViewOrders.php");
+}
+
+
+load_products_data();
+
 ?>
 
 

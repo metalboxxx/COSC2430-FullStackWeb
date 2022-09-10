@@ -4,11 +4,17 @@ ob_start();
 require_once 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
-load_products_data();
 
 if ($_SESSION["user_type"] == "Vendor") {
     header("Location: VendorViewProducts.php");
 }
+if ($_SESSION["user_type"] == "Shipper") {
+    header("Location: ViewOrders.php");
+}
+
+
+load_products_data();
+
 
 if (isset($_POST["get_product_detail"])){
         $_SESSION["selected_product"]["id"] = $_POST["id"];
