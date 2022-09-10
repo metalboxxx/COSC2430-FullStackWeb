@@ -70,3 +70,7 @@ if(isset($_POST['canceled'])){
     </form>
 </body>
 </html>
+
+<?php
+require_once 'commons/footer.php'
+?>

@@ -53,12 +53,6 @@ require_once 'commons/header.php';
           echo "No user is logged in now";
       }
 ?>
-<footer class="container-fluid text-center">
-                <ul class="nav justify-content-center border-bottom pb-1 mb-1">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Help</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                </ul>
-                <p class="text-center text-muted">© 2022 Copyright: Group 33</p>
-</footer>
+<?php
+require_once 'commons/footer.php'
+?>

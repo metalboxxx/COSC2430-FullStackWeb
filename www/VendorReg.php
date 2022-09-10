@@ -79,6 +79,7 @@ else
 }
 ?>
 
+<html>
 <body>
     <script src="register.js"></script>
 	<div class="container mt-5">
@@ -132,4 +133,8 @@ else
                 <p class="text-center text-muted">© 2022 Copyright: Group 33</p>       
     </footer>
 </body>
+</html>
 
+<?php
+require_once 'commons/footer.php'
+?>

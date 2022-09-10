@@ -73,3 +73,7 @@ if (isset($_POST["get_product_detail"])){
     </div>
 </body>
 </html>
+
+<?php
+require_once 'commons/footer.php'
+?>

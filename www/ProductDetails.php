@@ -33,30 +33,6 @@ if(isset($_GET['reset_cart'])){
     $_SESSION['cart'] = [];
 }
 
-
-// if (isset($_GET["remove_product"])){
-//     $tempCart =[];
-//     $indexOfRemove = 0;
-//     $indexCount = 0;
-//     foreach($_SESSION['cart'] as $product){
-//         global $indexOfRemove;
-//         if($product['name'] == $_GET['name']){
-//             break;
-//         }
-//         $indexOfRemove++;
-//     }
-//     foreach($_SESSION['cart'] as $product){
-//         global $indexOfRemove;
-//         global $indexCount;
-//         if($indexCount == $indexOfRemove){
-//             continue;
-//         }
-//         $tempCart[] = $product;
-//     }
-//     $_SESSION['cart'] = $tempCart;
-// }
-
-
 if(isset($_POST['finish_cart'])){
     load_orders_data();
     load_hubs_data();
@@ -150,12 +126,6 @@ if(isset($_POST['finish_cart'])){
                 echo "<td>{$i}</td>";
                 echo "<td>{$productInCart["name"]}</td>";
                 echo "<td>{$productInCart["price"]}</td>";
-
-                // echo "<td><form method='get' action='ProductDetails.php'>";
-                // echo "<input type='submit' name='remove_product' value='Click to remove'>";
-                // echo "<input type='hidden' name='name' value='{$productInCart["name"]}'>";
-                // echo "<input type='hidden' name='price' value={$productInCart["price"]}>";
-                // echo "</form></td>";
                 $i++;
             }
             echo "<tr>";
@@ -169,3 +139,6 @@ if(isset($_POST['finish_cart'])){
     </div>
 </body>
 </html>
+<?php
+require_once 'commons/footer.php'
+?>
