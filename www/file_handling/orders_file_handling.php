@@ -32,7 +32,6 @@ function save_orders_data() {
     if (is_array($_SESSION['orders'])) {
         foreach ($_SESSION['orders'] as $order){
             $order['products_bought'] = implode("|", $order['products_bought']);
-            print_r($order);        //debugging
             fputcsv($fp, $order);
         }
     }

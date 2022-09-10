@@ -62,9 +62,8 @@ if(isset($_POST['finish_cart'])){
         'price' => $_SESSION['totalPrice'],
         'isDelivered' => 'false'
     ];
-    print_r($order);
+    
     $_SESSION['orders'][] = $order; 
-    print_r($_SESSION['orders']);       //debugging
     save_orders_data();
 
     $_SESSION['cart'] = [];
