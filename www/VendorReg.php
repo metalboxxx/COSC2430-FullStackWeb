@@ -15,14 +15,17 @@ if(isset($_POST["username"],$_POST["password"],$_POST["bsname"],$_POST["bsadd"])
     {
         $line = fgets($file);
         $array = explode(";",$line);
+        //Unique username check
         if(trim($array[0]) != "" && trim($array[1]) == $_POST['username']  )
         {
             $finduser=true;
             break;
         }
+        //Unique business name between business account check
         if(trim($array[3] ?? '', ' ') == $_POST['bsname'] ){
             $bname = true;
         }
+        //Unique business address between business account check
         if(trim($array[0]) == "Vendor" && trim($array[4] ?? '', ' ') == $_POST['bsadd'] ){
             $badd = true;
         }
@@ -30,25 +33,25 @@ if(isset($_POST["username"],$_POST["password"],$_POST["bsname"],$_POST["bsadd"])
     }
     fclose($file);
  
-    // register user or pop up message
+    // store profile picture in located file
     $target_path = "img/";
     $og_file = $_FILES["profilePicture"]["name"];
     $upload_file = move_uploaded_file($_FILES['profilePicture']['tmp_name'], $target_path.$og_file);
 
-    // $directory = 'uploads/';
-    // move_uploaded_file($og_file, $directory);
     if( $finduser)
     {
         echo 'Username: '.$_POST["username"].' ';
         echo ' existed!';
         require_once 'VendorReg.php';
     }
+    //Unique Business name announce
     else if( $bname )
     {
         echo 'Business name: '. $_POST["bsname"].' ';
         echo ' existed!';
         require_once 'VendorReg.php';
     }
+    //Unique Bussiness Address announce
     else if( $badd )
     {
         echo 'Business Address: '. $_POST["bsadd"].' ';
@@ -56,12 +59,12 @@ if(isset($_POST["username"],$_POST["password"],$_POST["bsname"],$_POST["bsadd"])
         require_once 'VendorReg.php';
     }
     else
-    {
-        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["bsname"]) && preg_match('/^.{5,}$/', $_POST["bsadd"]) ){
+    {   //Create account if every condition is good
+        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["bsname"]) && preg_match('/^.{5,}$/', $_POST["bsadd"]) ){
             $file = fopen("../data/account.db", "a");
             fputs($file,"Vendor;".$_POST["username"].";".password_hash($_POST["password"], PASSWORD_DEFAULT).";".$_POST["bsname"].";".$_POST["bsadd"].";".$og_file."\r\n");
             fclose($file);
-            echo $_POST["username"];
+            echo "Vendor Account: ".$_POST["username"];
             echo " registered successfully!";  
         }
         else{

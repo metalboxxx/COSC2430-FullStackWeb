@@ -6,8 +6,8 @@ require 'file_handling/products_file_handling.php';
 
 load_products_data();
 
-if ($_SESSION["user_type"] == "Vendor") {
-    header("Location: VendorViewProducts.php");
+if ($_SESSION["user_type"] == "Customer") {
+    header("Location: ViewProducts.php");
 }
 
 if (isset($_POST["get_product_detail"])){
@@ -45,21 +45,37 @@ if (isset($_POST["get_product_detail"])){
     }
 </style>
 <body>
-    <h2>All products in sale</h2>
-    <div class="container-fluid row">
+    <h2>All products from your vendor</h2>
+    <form method='post' action='AddNewProduct.php'>
+        <input type='submit' name='get_product_detail' value='Add new product'>
+    </form>
+    <table style="width:50%">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>See detail</th>
+        </tr>
     <?php
         if (isset($_SESSION['products'])) {
             foreach ($_SESSION['products'] as $product) {
-                echo "<form method='post' action='ViewProducts.php'>";
-                echo "<input class='form-control  shadow p-3 mb-5 bg-body rounded ' type='submit' name='get_product_detail' value='{$product["name"]} - Price: {$product["price"]}'>";
+                if ($_SESSION["use"] != $product["vendor"]) {
+                    continue;
+                }
+                echo "<tr>";
+                echo "<td>{$product["id"]}</td>";
+                echo "<td>{$product["name"]}</td>";
+                echo "<td>{$product["price"]}</td>";
+                echo "<td><form method='post' action='ViewProducts.php'>";
+                echo "<input type='submit' name='get_product_detail' value='Click to view'>";
                 echo "<input type='hidden' name='id' value='{$product["id"]}'>";
                 echo "<input type='hidden' name='name' value={$product["name"]}>";
                 echo "<input type='hidden' name='price' value={$product["price"]}>";
                 echo "<input type='hidden' name='vendor' value={$product["vendor"]}>";
-                echo "</form>";
+                echo "</form></td></tr>";
             }
         }
-    ?>
-    </div>
+        ?>
+    </table>
 </body>
 </html>
