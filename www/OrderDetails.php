@@ -1,14 +1,16 @@
 <?php
 
-// if (!isset($_SESSION['selected_order'])){
-//     header("location: see_products.php");
-// }
+if (!isset($_SESSION['selected_order'])){
+    header("location: ViewOrders.php");      //subject to change
+}
 
 require_once "commons/header.php";
 require "file_handling/orders_file_handling.php";
 
+
+
 if(isset($_POST['deliveried'])){        
-    $_SESSION["selected_order"]["isDeliveried"] = TRUE;
+    $_SESSION["selected_order"]["isDeliveried"] = 'true';
     save_orders_data();
     header('location: ViewOrders.php');     //Subject to change name
 }

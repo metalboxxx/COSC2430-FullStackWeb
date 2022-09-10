@@ -8,6 +8,15 @@ require 'file_handling/orders_file_handling.php';
 require 'file_handling/hubs_file_handling.php';
 
 
+if(!isset($_SESSION['use'])){
+    header("location: index.php");
+}
+
+if (!isset($_SESSION['selected_product'])){
+    header("location: ViewProducts.php");     
+}
+
+
 // Buttons fuctionalities
 if (isset($_GET['add_product'])){
     if (isset($_SESSION['cart'])){
