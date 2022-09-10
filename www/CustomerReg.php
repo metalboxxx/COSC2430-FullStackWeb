@@ -37,11 +37,11 @@ if(isset($_POST["username"],$_POST["password"],$_POST["name"],$_POST["email"],$_
     else
     {   
         //store account in text file if the condition is true
-        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["name"]) && preg_match('/^.{5,}$/', $_POST["email"]) && preg_match('/^.{5,}$/', $_POST["address"])){
+        if(preg_match('/^[a-zA-Z0-9]{8,15}$/', $_POST["username"]) && preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*,])[A-Za-z\d!@#$%^&*,]{8,20}$/', $_POST["password"]) && preg_match('/^.{5,}$/', $_POST["name"]) && preg_match('/^.{5,}$/', $_POST["email"]) && preg_match('/^.{5,}$/', $_POST["address"])){
             $file = fopen("../data/account.db", "a");
             fputs($file,"Customer;".$_POST["username"].";".password_hash($_POST["password"], PASSWORD_DEFAULT).";".$_POST["name"].";".$_POST["email"].";".$_POST["address"].";".$og_file."\r\n");
             fclose($file);
-            echo $_POST["username"];
+            echo "Customer Account: ". $_POST["username"];
             echo " registered successfully!";  
         }
         else{
