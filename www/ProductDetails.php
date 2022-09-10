@@ -34,9 +34,10 @@ if(isset($_GET['reset_cart'])){
 }
 
 if(isset($_POST['finish_cart'])){
+    if($_SESSION['cart'] != []){
     load_orders_data();
     load_hubs_data();
-
+    
     $random_hub;
     $hubs_ammount = count($_SESSION['hubs']);
     $rand_hub_index = random_int(0,$hubs_ammount-1);
@@ -65,7 +66,7 @@ if(isset($_POST['finish_cart'])){
     $_SESSION['orders'][] = $order; 
     save_orders_data();
     $_SESSION['cart'] = [];
-}
+}}
 ?>
 
 <!DOCTYPE html>
@@ -139,6 +140,3 @@ if(isset($_POST['finish_cart'])){
     </div>
 </body>
 </html>
-<?php
-require_once 'commons/footer.php'
-?>

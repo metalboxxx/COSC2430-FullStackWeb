@@ -38,7 +38,7 @@ function FormValidate(){
         return false;
 
     }else if(!regexPassword.test(password)){
-        errorPassword.innerHTML = "contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
+        errorPassword.innerHTML = "Contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
         return false;
     }else{
         errorPassword.innerHTML = '';
@@ -120,7 +120,7 @@ function VendorRegisterValidate(){
         return false;
 
     }else if(!regexPassword.test(password)){
-        errorPassword.innerHTML = "contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
+        errorPassword.innerHTML = "Contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
         return false;
     }else{
         errorPassword.innerHTML = '';
@@ -180,7 +180,7 @@ function ShipperRegisterValidate(){
         return false;
 
     }else if(!regexPassword.test(password)){
-        errorPassword.innerHTML = "Password must be from 8 to 20 characters. Each password must contain at least 1 lower case letter, at least 1 upper case letter, at least 1 digit!";
+        errorPassword.innerHTML = "Contains at least one upper case letter, at least one lower case letter, at least one digit, at least one special letter in the set !@#$%^&*, and has a length from 8 to 20 characters";
         return false;
     }else{
         errorPassword.innerHTML = '';

@@ -4,6 +4,9 @@ ob_start();
 require_once 'commons/header.php';
 require 'file_handling/products_file_handling.php';
 
+if(!isset($_SESSION['use'])){
+    header("location: login.php");
+}
 
 if ($_SESSION["user_type"] == "Vendor") {
     header("Location: VendorViewProducts.php");

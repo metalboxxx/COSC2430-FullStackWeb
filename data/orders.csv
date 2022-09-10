@@ -1,10 +1,16 @@
 id,address,products_bought,distribution_hub,created_at,price,status
-13,"47 Lam Van Ben",337|337|337,Le_Nghia,"2022-09-10 04:22:01",3702,active
-15,"47 Lam Van Ben",338|338,Le_Nghia,"2022-09-10 04:51:23",2468,active
+13,"47 Lam Van Ben",337|337|337,Le_Nghia,"2022-09-10 04:22:01",3702,delivered
+15,"47 Lam Van Ben",338|338,Le_Nghia,"2022-09-10 04:51:23",2468,delivered
 16,"44 Nguyen Thi Thap",338|338|338,Le_Nghia,"2022-09-10 04:52:36",3702,canceled
 17,"44 Nguyen Thi Thap",338|338,Thuan_Phat,"2022-09-10 05:07:01",2468,delivered
 18,"44 Nguyen Thi Thap",337|337|337,Phuong_Trang,"2022-09-10 08:03:52",3702,active
 19,"47 Lam Van Ben",337|337,Phuong_Trang,"2022-09-10 09:52:40",2468,active
 20,"47 Lam Van Ben",337|337|337|337,Phuong_Trang,"2022-09-10 11:16:28",4936,active
-21,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",339|337,Thuan_Phat,"2022-09-10 14:42:33",3489,active
+21,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",339|337,Thuan_Phat,"2022-09-10 14:42:33",3489,delivered
 22,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",342,Phuong_Trang,"2022-09-10 14:43:40",330,active
+23,"47 Lam Van Ben",339|341,Thuan_Phat,"2022-09-10 15:23:57",2480,active
+24,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",343|337,Phuong_Trang,"2022-09-10 15:33:39",1454,active
+25,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",337|337|337|337,Le_Nghia,"2022-09-10 15:41:41",4936,active
+26,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",337|337,Le_Nghia,"2022-09-10 15:42:45",2468,active
+27,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",341,Thuan_Phat,"2022-09-10 15:43:03",225,active
+28,"702 Nguyen Van Linh, District 7, Ho Chi Minh City",343|344,Le_Nghia,"2022-09-10 15:47:34",520,canceled

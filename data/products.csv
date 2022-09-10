@@ -4,3 +4,6 @@ id,name,vendor,price,description
 340,Coffe,metalboxxxVen,56,good
 341,LongJacket,TheVendor,225,"Made out of crocodile skin!"
 342,LeatherShoe,TheVendor,330,"Made out of crocodile skin!"
+343,ClothRacket,RmitVendor,220,"Very Sturdy"
+344,LeatherBoot,TheVendor,300,"Very Sturdy"
+345,LeatherHat,TheVendor,126,"Very fashionable"
